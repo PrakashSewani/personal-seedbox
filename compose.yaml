@@ -1,0 +1,24 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+
+    restart: unless-stopped
+
+    ports:
+      - "8096:8096"
+
+    environment:
+      - TZ=${TZ}
+
+    volumes:
+      - ${CONFIG_ROOT}/jellyfin:/config
+      - ${CACHE_ROOT}/jellyfin:/cache
+      - ${MEDIA_ROOT}:/media
+
+    networks:
+      - seedbox
+
+networks:
+  seedbox:
+    driver: bridge
