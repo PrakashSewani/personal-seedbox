@@ -1,6 +1,6 @@
 # Seedbox
 
-Infrastructure for my local media server.
+Infrastructure for my local storage server.
 
 ## Start
 

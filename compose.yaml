@@ -19,6 +19,31 @@ services:
     networks:
       - seedbox
 
+  qbittorrent:
+    image: linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+
+    restart: unless-stopped
+
+    ports:
+      - "8080:8080"     # Web UI
+      - "6881:6881"     # Torrent TCP
+      - "6881:6881/udp" # Torrent UDP
+
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - WEBUI_PORT=8080
+
+    volumes:
+      - ${CONFIG_ROOT}/qbittorrent:/config
+      - ${MEDIA_ROOT}/movies:/Movies
+      - ${MEDIA_ROOT}/shows:/Shows
+
+    networks:
+      - seedbox
+
 networks:
   seedbox:
     driver: bridge
