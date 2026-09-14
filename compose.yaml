@@ -38,6 +38,7 @@ services:
 
     volumes:
       - ${CONFIG_ROOT}/qbittorrent:/config
+      - ./qbittorrent/custom-cont-init.d:/custom-cont-init.d:ro
       - ${MEDIA_ROOT}/movies:/Movies
       - ${MEDIA_ROOT}/shows:/Shows
 
